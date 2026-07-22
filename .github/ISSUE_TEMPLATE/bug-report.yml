@@ -1,0 +1,46 @@
+name: 不具合を報告する
+description: 表示や教材の問題を講師・チームへ知らせます
+title: "[不具合] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        分かる範囲で記入してください。個人情報やパスワードは書かないでください。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 起きていること
+      placeholder: 何が、どのようになっていますか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+      placeholder: 本来はどうなると思いましたか？
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 問題が起きるまでの操作を順番に書いてください。
+      placeholder: |
+        1. ○○を開く
+        2. ○○を押す
+        3. エラーが表示される
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 利用端末・ブラウザ
+      placeholder: 例：Windows 11 / Chrome
+    validations:
+      required: true

@@ -1,0 +1,70 @@
+name: メンバーカードを追加する
+description: 自分の担当・状態・ひとことをTeam Status Boardに追加します
+title: "[メンバー追加] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        このIssueを自分に割り当ててから作業を始めましょう。入力内容は、あとで自分のJSONファイルへコピーします。
+
+  - type: input
+    id: display-name
+    attributes:
+      label: 表示名
+      description: ボードに表示する名前です（30文字以内）。
+      placeholder: 例：田中
+    validations:
+      required: true
+
+  - type: input
+    id: role
+    attributes:
+      label: 担当
+      description: 今回の担当です（30文字以内）。
+      placeholder: 例：デザイン
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: 状態
+      description: 現在の状態を1つ選びます。
+      options:
+        - 未着手
+        - 作業中
+        - 確認待ち
+        - 完了
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: ひとこと
+      description: チームへ伝えたいことを書きます（100文字以内）。
+      placeholder: 例：トップ画面を確認しています
+    validations:
+      required: true
+
+  - type: input
+    id: file-name
+    attributes:
+      label: 希望するファイル名
+      description: 半角小文字・数字・ハイフンだけを使い、.jsonで終えてください。
+      placeholder: 例：tanaka.json
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: done
+    attributes:
+      label: 完了条件
+      description: Pull Requestをマージする前に、すべて確認します。
+      options:
+        - label: 自分用のJSONファイルが追加されている
+        - label: 自動チェックが成功している
+        - label: Pull Requestに画面確認結果が書かれている
+        - label: 1人以上からレビューを受けている

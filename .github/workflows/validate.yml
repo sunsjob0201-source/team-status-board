@@ -1,0 +1,27 @@
+name: Pull Request チェック
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    name: JSON検証とビルド
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを読み込む
+        uses: actions/checkout@v6
+
+      - name: Node.jsを準備する
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: メンバーデータを検証する
+        run: node scripts/validate.mjs
+
+      - name: 公開ファイルをビルドする
+        run: node scripts/build.mjs

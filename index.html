@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GitHub共同作業を練習するためのチーム状況ボード">
+    <title>Team Status Board</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="./assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">メインコンテンツへ移動</a>
+
+    <header class="site-header">
+      <div class="header-decoration header-decoration-one" aria-hidden="true"></div>
+      <div class="header-decoration header-decoration-two" aria-hidden="true"></div>
+      <div class="container header-content">
+        <p class="eyebrow"><span aria-hidden="true">●</span> GitHub共同作業練習</p>
+        <h1>Team Status Board</h1>
+        <p class="header-description">みんなの担当と進み具合を、ひと目で確認。</p>
+      </div>
+    </header>
+
+    <main id="main-content" class="container main-content">
+      <section id="announcement" class="announcement" aria-labelledby="announcement-title" hidden>
+        <div class="announcement-icon" aria-hidden="true">!</div>
+        <div>
+          <h2 id="announcement-title">今日のお知らせ</h2>
+          <p id="announcement-text"></p>
+        </div>
+      </section>
+
+      <section class="summary" aria-labelledby="summary-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">OVERVIEW</p>
+            <h2 id="summary-title">チームのいま</h2>
+          </div>
+          <p class="updated-label" aria-label="データはページ表示時に更新されます">
+            <span aria-hidden="true">↻</span> 最新の登録内容
+          </p>
+        </div>
+
+        <div class="summary-grid">
+          <article class="stat-card stat-members">
+            <div class="stat-icon" aria-hidden="true">人</div>
+            <div>
+              <p class="stat-label">登録メンバー</p>
+              <p class="stat-value"><span id="member-count">—</span><span class="stat-unit">人</span></p>
+            </div>
+          </article>
+          <article class="stat-card stat-completed">
+            <div class="stat-icon" aria-hidden="true">✓</div>
+            <div>
+              <p class="stat-label">完了</p>
+              <p class="stat-value"><span id="completed-count">—</span><span class="stat-unit">人</span></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="members-section" aria-labelledby="members-title">
+        <div class="section-heading members-heading">
+          <div>
+            <p class="section-kicker">MEMBERS</p>
+            <h2 id="members-title">メンバー一覧</h2>
+          </div>
+          <div class="status-guide" aria-label="状態の種類">
+            <span><i class="guide-dot dot-not-started" aria-hidden="true"></i>未着手</span>
+            <span><i class="guide-dot dot-in-progress" aria-hidden="true"></i>作業中</span>
+            <span><i class="guide-dot dot-waiting" aria-hidden="true"></i>確認待ち</span>
+            <span><i class="guide-dot dot-completed" aria-hidden="true"></i>完了</span>
+          </div>
+        </div>
+
+        <p id="loading" class="state-message" role="status">メンバーデータを読み込んでいます…</p>
+        <p id="empty-state" class="state-message empty-state" hidden>まだメンバーが登録されていません</p>
+        <div id="error-state" class="state-message error-state" role="alert" hidden>
+          <strong>データを表示できませんでした</strong>
+          <span>時間をおいてページを再読み込みしてください。</span>
+        </div>
+        <div id="member-list" class="member-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p><strong>Team Status Board</strong></p>
+        <p>このページはGitHubでの共同作業を学ぶための練習用サイトです。</p>
+      </div>
+    </footer>
+  </body>
+</html>
